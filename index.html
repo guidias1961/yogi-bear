@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOGI BEAR | TON EXPLORER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ton-blue: #0088cc;
+            --ton-dark: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background-color: var(--ton-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Desktop feel */
+        }
+
+        .glass-panel {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .file-icon {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .file-icon:hover {
+            background: rgba(0, 136, 204, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .sidebar-item {
+            transition: 0.2s;
+        }
+
+        .sidebar-item:hover {
+            background: var(--ton-blue);
+            color: white;
+        }
+
+        .path-bar {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--ton-blue); border-radius: 10px; }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 136, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
+        }
+
+        .btn-buy {
+            animation: pulse-glow 2s infinite;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col">
+
+    <header class="h-12 border-b border-white/10 flex items-center justify-between px-6 bg-black/40 backdrop-blur-md">
+        <div class="flex items-center gap-4">
+            <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+            </div>
+            <span class="text-xs uppercase tracking-widest text-white/40 font-bold">Filesystem v1.0.9 - Jellystone OS</span>
+        </div>
+        <div class="text-sm font-medium text-ton-blue">27 DEC 2025 | 1:59 PM</div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden">
+        
+        <aside class="w-64 border-r border-white/10 flex flex-col bg-black/20 p-4 gap-6">
+            <div>
+                <h3 class="text-[10px] uppercase text-white/30 font-bold mb-4 tracking-widest">Navigation</h3>
+                <nav class="flex flex-col gap-1">
+                    <a href="#" class="sidebar-item px-3 py-2 rounded-md text-sm flex items-center gap-3 bg-blue-600"><span>📁</span> Home</a>
+                    <a href="#" class="sidebar-item px-3 py-2 rounded-md text-sm text-white/60 flex items-center gap-3"><span>📂</span> Documents</a>
+                    <a href="#" class="sidebar-item px-3 py-2 rounded-md text-sm text-white/60 flex items-center gap-3 pl-8"><span>📂</span> Tokens</a>
+                    <a href="#" class="sidebar-item px-3 py-2 rounded-md text-sm text-white/60 flex items-center gap-3 pl-12 bg-white/5 border-l-2 border-blue-500"><span>🐻</span> Yogi Bear</a>
+                </nav>
+            </div>
+
+            <div>
+                <h3 class="text-[10px] uppercase text-white/30 font-bold mb-4 tracking-widest">Connect</h3>
+                <div class="flex flex-col gap-2">
+                    <a href="https://x.com" target="_blank" class="glass-panel px-4 py-3 rounded-xl text-xs font-bold hover:bg-white/10 transition flex items-center justify-between">
+                        TWITTER / X <span>↗</span>
+                    </a>
+                    <a href="https://t.me" target="_blank" class="glass-panel px-4 py-3 rounded-xl text-xs font-bold hover:bg-white/10 transition flex items-center justify-between">
+                        TELEGRAM <span>↗</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-auto">
+                <a href="https://stonkslabs.com" target="_blank" class="btn-buy w-full bg-[#0088cc] hover:bg-[#00aaff] text-white py-4 rounded-2xl font-black text-center block transition-all">
+                    BUY $YOGI
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col">
+            <div class="h-14 border-b border-white/5 flex items-center px-8 gap-4 bg-white/[0.02]">
+                <div class="flex items-center gap-2 text-white/40 text-sm">
+                    <span>🏠</span>
+                    <span>/</span>
+                    <span>Personal Folder</span>
+                    <span>/</span>
+                    <span>Documents</span>
+                    <span>/</span>
+                    <span>Tokens</span>
+                    <span>/</span>
+                    <span class="text-white font-semibold">Yogi Bear</span>
+                </div>
+            </div>
+
+            <div class="p-10 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                
+                <div class="file-icon flex flex-col items-center p-4 group" onclick="openPreview('logo.png')">
+                    <div class="w-full aspect-square glass-panel rounded-2xl overflow-hidden mb-3 border-2 border-transparent group-hover:border-blue-500">
+                        <img src="logo.png" class="w-full h-full object-cover p-2" alt="Logo">
+                    </div>
+                    <span class="text-xs font-medium text-white/70">logo.png</span>
+                </div>
+
+                <div class="file-icon flex flex-col items-center p-4 group" onclick="openPreview('meme1.jpg')">
+                    <div class="w-full aspect-square glass-panel rounded-2xl overflow-hidden mb-3 group-hover:border-blue-500 border-2 border-transparent">
+                        <img src="meme1.jpg" class="w-full h-full object-cover" alt="Meme 1">
+                    </div>
+                    <span class="text-xs font-medium text-white/70">meme_alpha.jpg</span>
+                </div>
+
+                <div class="file-icon flex flex-col items-center p-4 group" onclick="openPreview('meme2.jpg')">
+                    <div class="w-full aspect-square glass-panel rounded-2xl overflow-hidden mb-3 group-hover:border-blue-500 border-2 border-transparent">
+                        <img src="meme2.jpg" class="w-full h-full object-cover" alt="Meme 2">
+                    </div>
+                    <span class="text-xs font-medium text-white/70">peeking_yogi.jpg</span>
+                </div>
+
+                <div class="file-icon flex flex-col items-center p-4 group" onclick="openPreview('meme3.jpg')">
+                    <div class="w-full aspect-square glass-panel rounded-2xl overflow-hidden mb-3 group-hover:border-blue-500 border-2 border-transparent">
+                        <img src="meme3.jpg" class="w-full h-full object-cover" alt="Meme 3">
+                    </div>
+                    <span class="text-xs font-medium text-white/70">ranger_alert.jpg</span>
+                </div>
+
+                <div class="file-icon flex flex-col items-center p-4 group" onclick="openPreview('meme4.jpg')">
+                    <div class="w-full aspect-square glass-panel rounded-2xl overflow-hidden mb-3 group-hover:border-blue-500 border-2 border-transparent">
+                        <img src="meme4.jpg" class="w-full h-full object-cover" alt="Meme 4">
+                    </div>
+                    <span class="text-xs font-medium text-white/70">cooking_heat.jpg</span>
+                </div>
+
+                <div class="file-icon flex flex-col items-center p-4 group" onclick="openPreview('meme5.jpg')">
+                    <div class="w-full aspect-square glass-panel rounded-2xl overflow-hidden mb-3 group-hover:border-blue-500 border-2 border-transparent">
+                        <img src="meme5.jpg" class="w-full h-full object-cover" alt="Meme 5">
+                    </div>
+                    <span class="text-xs font-medium text-white/70">hammock_lifestyle.jpg</span>
+                </div>
+
+                <div class="file-icon flex flex-col items-center p-4 group" onclick="openPreview('meme6.jpg')">
+                    <div class="w-full aspect-square glass-panel rounded-2xl overflow-hidden mb-3 group-hover:border-blue-500 border-2 border-transparent">
+                        <img src="meme6.jpg" class="w-full h-full object-cover" alt="Meme 6">
+                    </div>
+                    <span class="text-xs font-medium text-white/70">dancing_gains.jpg</span>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="previewModal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-10 backdrop-blur-xl">
+        <div class="max-w-4xl w-full flex flex-col gap-4">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h2 id="modalTitle" class="font-mono text-blue-400">filename.ext</h2>
+                <button onclick="closePreview()" class="text-white hover:text-red-500 font-bold text-2xl">✕</button>
+            </div>
+            <img id="modalImg" src="" class="w-full max-h-[70vh] object-contain rounded-3xl" alt="Preview">
+            <div class="flex justify-center gap-4 mt-4">
+                <button class="px-8 py-3 glass-panel rounded-full text-sm font-bold hover:bg-white/10">DOWNLOAD ASSET</button>
+                <button class="px-8 py-3 bg-blue-600 rounded-full text-sm font-bold btn-buy">BUY TOKEN</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPreview(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('modalTitle').innerText = src.toUpperCase();
+            document.getElementById('previewModal').classList.remove('hidden');
+        }
+
+        function closePreview() {
+            document.getElementById('previewModal').classList.add('hidden');
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closePreview();
+        });
+    </script>
+</body>
+</html>
